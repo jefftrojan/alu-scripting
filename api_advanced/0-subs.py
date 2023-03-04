@@ -1,10 +1,12 @@
 #!/usr/bin/python3
-""" Returns the number of subscribers for a given subreddit."""
+"""
+Returns the number of subscribers from a subreddit
+"""
 import requests
 
 
 def number_of_subscribers(subreddit):
-    # Set custom user-agent header
+    """ Set a custom header user-agent """
     headers = {"User-Agent": "ALU-scripting API 0.1"}
     url = f"https://www.reddit.com/r/{subreddit}.json"
 
