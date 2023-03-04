@@ -8,7 +8,7 @@ import requests
 def number_of_subscribers(subreddit):
     """ Set a custom header user-agent """
     headers = {"User-Agent": "ALU-scripting API 0.1"}
-    url = f"https://www.reddit.com/r/{subreddit}.json"
+    url = "https://www.reddit.com/r/{}.json".format(subreddit)
 
     try:
         response = requests.get(url, headers=headers,
