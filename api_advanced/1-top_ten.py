@@ -9,7 +9,7 @@ def top_ten(subreddit):
     url = "https://reddit.com/r/{}.json".format(subreddit)
 
     try:
-        response = requests.get(url, headers=headers, timeout=30, 
+        response = requests.get(url, headers=headers, timeout=30,
                                 allow_redirects=False)
     except requests.exceptions.Timeout:
         return "Request Timeout! "
