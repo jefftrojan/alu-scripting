@@ -6,7 +6,7 @@ import requests
 def top_ten(subreddit):
     """ Set a custom header user-agent """
     headers = {"User-Agent": "ALU scriptting 1.0"}
-    url = f"https://reddit.com/r/{subreddit}.json"
+    url = "https://reddit.com/r/{}.json".format(subreddit)
 
     try:
         response = requests.get(url, headers=headers, timeout=30, allow_redirects=False)
