@@ -4,11 +4,18 @@ import requests
 
 
 def top_ten(subreddit):
-    headers = {"User-Agent": "ALU-scripting API 0.1" }
-    url = "https://reddit.com/r/{}.json".format(subreddit)
-    
+    headers = {"User-Agent": "ALU scriptting 1.0"}
+    url = "https://www.reddit.com/r/{}.json".format(subreddit)
+
     try:
-	response = requests.get(url, headers=headers, timeout=30, allow_redirects=False)
+        response = requests.get(url, headers=headers, timeout=30, allow_redirects=False)
     except requests.exceptions.Timeout:
-	return " The Request Timed Out!"
-    	
+        return "Request Timeout! "
+
+    if response.status_code != 200:
+        print(None)
+
+    else:
+        json_data = response.json()
+        for i in range(10):
+            print(json_data.get("data").get("children").get("title"))
