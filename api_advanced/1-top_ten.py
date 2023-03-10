@@ -1,23 +1,23 @@
 #!/usr/bin/python3
-""" Queries reddit API and first 10 titles post """
+""" Get the titles of the first 10 hot posts for a given subreddit."""
 import requests
 
 
 def top_ten(subreddit):
-    """ Set a custom header user-agent """
-    headers = {"User-Agent": "ALU scriptting 1.0"}
-    url = "https://reddit.com/r/{}.json".format(subreddit)
 
-    try:
-        response = requests.get(url, headers=headers, timeout=30,
-                                allow_redirects=False)
-    except requests.exceptions.Timeout:
-        return "Request Timeout! "
+    headers = {'User-Agent': 'MyAPI/0.0.1'}
+    subreddit_url = "https://reddit.com/r/{}.json".format(subreddit)
+    response = requests.get(subreddit_url, headers=headers)
 
     if response.status_code == 200:
         json_data = response.json()
-        for posts in range(10):
-            print(json_data.get("data").get("children")[posts].get("data").get("title"))
-
+        for i in range(10):
+            print(
+                json_data.get('data')
+                .get('children')[i]
+                .get('data')
+                .get('title')
+            )
     else:
         print(None)
+
